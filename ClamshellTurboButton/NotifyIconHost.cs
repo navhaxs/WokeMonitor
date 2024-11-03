@@ -18,6 +18,18 @@ namespace ClamshellTurboButton
         public NotifyIconHost()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
+        }
+        
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                // turn on WS_EX_TOOLWINDOW style bit
+                cp.ExStyle |= 0x80;
+                return cp;
+            }
         }
 
         private void notifyIcon1_Click(object sender, EventArgs e)
